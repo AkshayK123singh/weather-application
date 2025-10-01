@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://darkskyapp.github.io/skycons/skycons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="#" class="nav-link active" data-target="dashboard-container">Weather Dashboard</a>
+        <a href="#" class="nav-link" data-target="hourly-temperature-container">Hourly Temperature</a>
+        <a href="#" class="nav-link" data-target="solar-radiation-container">Solar Radiations</a>
+        <a href="#" class="nav-link" data-target="humidity-container">Humidity</a>
+        <a href="#" class="nav-link" data-target="wind-container">Wind</a>
+        <a href="#" class="nav-link" data-target="aqi-container">AQI</a>
+        <a href="#" class="nav-link" data-target="cloud-cover-container">Cloud Cover</a>
+    </nav>
+    
+    <div class="main-content">
+        
+        <div id="top-dashboard-row">
+            
+            <div class="info-section active insight-column" id="left-insight-column">
+                <div id="atmosphere-insight-box">
+                    <div class="graph-description-box" id="comfort-insight-card" style="border: 2px solid #9370DB; margin: 0; padding: 15px; min-height: 100%;">
+                        <div class="heading" style="color:#9370DB; border-bottom: 1px solid rgba(255, 255, 255, 0.2);">Daily Life & Comfort Impact (Consolidated)</div>
+                        <div id="atmosphere-recommendation" class="dynamic-recommendation" style="font-size: 16px; font-weight: normal; color: #fff; border-left: 4px solid #9370DB; background: rgba(147, 112, 219, 0.1); padding: 10px;">
+                            Analyzing current conditions for daily life impact...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section active dashboard-column" id="dashboard-container">
+                <div class="weather-app">
+                    <header class="app-header">
+                        <h1 class="app-title">Weather Dashboard</h1>
+                        <div class="controls">
+                            <div class="search-container">
+                                <input type="text" id="city-input" placeholder="Enter city name" class="search-input">
+                                <button id="search-btn" class="search-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="search-icon">
+                                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="unit-toggle">
+                                <input type="checkbox" id="unit-switch" class="unit-switch">
+                                <label for="unit-switch" class="unit-label">
+                                    <span>°C</span>
+                                    <span class="toggle-slider"></span>
+                                    <span>°F</span>
+                                </label>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="weather-display" id="weather-display">
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="weather-content">
+            
+            <div class="info-section" id="forecast-window">
+                <div class="forecast-header">
+                    <h2>10-Day Forecast</h2>
+                </div>
+                <div class="forecast-grid-container">
+                    <div class="forecast-grid" id="forecast-grid-1">
+                    </div>
+                    <div class="forecast-grid" id="forecast-grid-2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section" id="hourly-temperature-container">
+                <div class="graph-container-wrapper">
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Surface Layer Conditions (2m / 6.5 ft)</h2>
+                            <canvas id="hourlyTempChart"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyTempChart">
+                            <div class="heading">About This Data</div>
+                            <div class="chart-description-text">
+                                <p>This is the temperature felt at walking height, directly influencing comfort and daily decisions. Compares today's forecast to yesterday's actuals and tomorrow's forecast, showing the 24-hour cycle.</p>
+                                <p>
+                                    <strong style="color:#ffcc00;">• Context:</strong> This line shows the expected **daily temperature swing** and when the peak heat/cold will occur today compared to historical norms.
+                                </p>
+                                <p>
+                                    <strong style="color:#ffcc00;">• Key Trend Insight:</strong>
+                                    <span id="ground-level-dynamic-insight" class="dynamic-insight-text">
+                                        Loading trend insight...
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="heading recommendation-heading">Recommendation</div>
+                            <p id="ground-level-recommendation" class="dynamic-recommendation">
+                                Calculating recommendation...
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <hr class="section-divider">
+
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Temperature at 80m (Boundary Layer)</h2>
+                            <canvas id="hourlyTempChart80m"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyTempChart80m">
+                            <div class="heading">Atmospheric Insight: Wind & Stability</div>
+                            <div class="chart-description-text">
+                                <p>This chart displays temperature within the **atmospheric boundary layer**, crucial for local weather development and air movement patterns. It often shows less fluctuation than the ground layer.</p>
+                            </div>
+                            <div class="heading recommendation-heading">Operational Recommendation</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                💨 **Drone Operations**: If inversions are present (warmer at 80m), expect low-level turbulence, poor visibility, and reduced lift efficiency near the ground.
+                                <br>
+                                🏭 **Air Quality**: During inversions, sensitive groups should monitor AQI closely, as air quality is likely to deteriorate due to pollutant trapping.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <hr class="section-divider">
+
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Temperature at 120m (Mid-Level)</h2>
+                            <canvas id="hourlyTempChart120m"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyTempChart120m">
+                            <div class="heading">Industrial Impact: Wind and Structure</div>
+                            <div class="chart-description-text">
+                                <p>This height is standard for many modern **wind turbine hubs** and the tops of **tall buildings**. Data here is vital for assessing equipment performance and structural thermal stress।</p>
+                            </div>
+                            <div class="heading recommendation-heading">Industrial Recommendation</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                🌬️ **Wind Energy**: When temperatures drop near the freezing point, initiate anti-icing protocols or schedule maintenance। High temperatures warrant monitoring for operational efficiency drops।
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <hr class="section-divider">
+
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Temperature at 180m (Upper Boundary)</h2>
+                            <canvas id="hourlyTempChart180m"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyTempChart180m">
+                            <div class="heading">Mesoscale Forecasting and Stability</div>
+                            <div class="chart-description-text">
+                                <p>This altitude represents the general **mixing depth** of the boundary layer on stable days। Comparing it against the lower layers gives a complete picture of vertical atmospheric structure।</p>
+                            </div>
+                            <div class="heading recommendation-heading">Forecasting Recommendation</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                ⛈️ **Forecasting**: If large temperature differences exist between 2m and 180m, watch for rapidly developing **cumulus clouds** in the afternoon। High stability suggests little risk of heavy rain or storms।
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section" id="solar-radiation-container">
+            </div>
+
+            <div class="info-section" id="humidity-container">
+                <div class="graph-container-wrapper">
+                    
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Relative Humidity (2m)</h2>
+                            <canvas id="hourlyHumidityChart"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyHumidityChart">
+                            <div class="heading">About Relative Humidity (%)</div>
+                            <div class="chart-description-text">
+                                <p>Relative humidity measures the amount of water vapor in the air as a percentage of the maximum amount the air can hold at that temperature। This directly affects human comfort, evaporation rates, and dew point risk।</p>
+                            </div>
+                            <div class="heading recommendation-heading">Comfort Recommendation</div>
+                            <p id="humidity-recommendation" class="dynamic-recommendation">
+                                Calculating recommendation...
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr class="section-divider">
+                    
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Dew Point Temperature (2m)</h2>
+                            <canvas id="hourlyDewPointChart"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyDewPointChart">
+                            <div class="heading">Absolute Moisture Indicator</div>
+                            <div class="chart-description-text">
+                                <p>The **Dew Point** is the temperature at which air must be cooled to become saturated। It is the best measure of the **actual** moisture content in the air and is independent of the current air temperature।</p>
+                            </div>
+                            <div class="heading recommendation-heading">Moisture Risk Recommendation</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                🌫️ **Visibility/Fog**: Monitor Dew Point closely when the air temperature is expected to drop near it। The smaller the difference, the higher the fog and dew risk।
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr class="section-divider">
+
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Vapor Pressure Deficit (VPD)</h2>
+                            <canvas id="hourlyVPDChart"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyVPDChart">
+                            <div class="heading">Plant Stress and Transpiration</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                🪴 **Irrigation/Greenhouse**: Check VPD during peak daylight hours। Adjust watering schedules or greenhouse ventilation (vents/fans) to maintain VPD in the optimal range ($0.8 \text{ to } 1.5 \text{ kPa}$) for healthy plant growth।
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section" id="wind-container">
+                <div class="graph-container-wrapper">
+                    
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Wind Speed (10m) - Yesterday, Today & Tomorrow</h2>
+                            <canvas id="hourlyWindChart10m"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyWindChart10m">
+                            <div class="heading">About This Data (Surface Wind)</div>
+                            <div class="chart-description-text">
+                                <p>This graph compares wind speed at $10\text{m}$ (standard meteorological height) across three days to highlight daily trends and significant shifts in surface wind conditions।</p>
+                            </div>
+                            <div class="heading recommendation-heading">Recommendation</div>
+                            <p id="wind-recommendation" class="dynamic-recommendation">
+                                Calculating recommendation...
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr class="section-divider">
+
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Wind Speed (80m)</h2>
+                            <canvas id="hourlyWindChart80m"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyWindChart80m">
+                            <div class="heading">Elevated Stability Indicator</div>
+                            <div class="chart-description-text">
+                                <p>Wind speed at $80\text{m}$ (approximately $262\text{ft}$) is a key indicator for **wind energy production** and understanding the atmospheric boundary layer। Wind is typically stronger at this height than at the surface।</p>
+                            </div>
+                            <div class="heading recommendation-heading">Operational Recommendation</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                🚁 **Drone/Crane**: Check the shear: if the $80\text{m}$ wind is 3x the $10\text{m}$ speed, expect high turbulence on takeoff/landing। Plan for peak wind hours।
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr class="section-divider">
+                    
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Wind Speed at 120m (Commercial Wind Energy)</h2>
+                            <canvas id="hourlyWindChart120m"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyWindChart120m">
+                            <div class="heading">Commercial Wind Energy Height</div>
+                            <div class="chart-description-text">
+                                <p>At $120\text{m}$ (nearly $400\text{ft}$), this represents the height for modern, large-scale commercial wind power generation। Speeds here are usually the **strongest** of the lower atmospheric layers।</p>
+                            </div>
+                            <div class="heading recommendation-heading">Industrial Recommendation</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                🌬️ **Wind Farm**: Monitor for speeds exceeding the cut-out limit (typically $90\text{km/h}$ or $55\text{mph}$) which will require turbine shutdowns।
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr class="section-divider">
+                    
+                    <div class="graph-container-item">
+                        <div class="graph-container">
+                            <h2>Hourly Wind Speed at 180m (Upper Boundary)</h2>
+                            <canvas id="hourlyWindChart180m"></canvas>
+                        </div>
+                        <div class="graph-description-box" id="desc-hourlyWindChart180m">
+                            <div class="heading">Upper Atmospheric Boundary</div>
+                            <div class="chart-description-text">
+                                <p>$180\text{m}$ wind speed gives a clear view into the movement of the air mass *above* the layers most affected by ground friction। It is a proxy for the **steering wind** of local weather systems।</p>
+                            </div>
+                            <div class="heading recommendation-heading">Forecasting Recommendation</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                ☁️ **Forecasting**: If the $180\text{m}$ wind is strong, expect fast-moving changes in overhead cloud cover। If it's calm, local conditions (e.g., fog, humidity) will dominate the weather pattern।
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section" id="solar-radiation-container">
+            </div>
+
+            <div class="info-section" id="aqi-container">
+            </div>
+
+            <div class="info-section" id="cloud-cover-container">
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
