@@ -137,11 +137,11 @@
                         <div class="graph-description-box" id="desc-hourlyTempChart120m">
                             <div class="heading">Industrial Impact: Wind and Structure</div>
                             <div class="chart-description-text">
-                                <p>This height is standard for many modern **wind turbine hubs** and the tops of **tall buildings**. Data here is vital for assessing equipment performance and structural thermal stress।</p>
+                                <p>This height is standard for many modern **wind turbine hubs** and the tops of **tall buildings**. Data here is vital for assessing equipment performance and structural thermal stress.</p>
                             </div>
                             <div class="heading recommendation-heading">Industrial Recommendation</div>
                             <p class="dynamic-recommendation static-recommendation">
-                                🌬️ **Wind Energy**: When temperatures drop near the freezing point, initiate anti-icing protocols or schedule maintenance। High temperatures warrant monitoring for operational efficiency drops।
+                                🌬️ **Wind Energy**: When temperatures drop near the freezing point, initiate anti-icing protocols or schedule maintenance. High temperatures warrant monitoring for operational efficiency drops.
                             </p>
                         </div>
                     </div>
@@ -156,11 +156,11 @@
                         <div class="graph-description-box" id="desc-hourlyTempChart180m">
                             <div class="heading">Mesoscale Forecasting and Stability</div>
                             <div class="chart-description-text">
-                                <p>This altitude represents the general **mixing depth** of the boundary layer on stable days। Comparing it against the lower layers gives a complete picture of vertical atmospheric structure।</p>
+                                <p>This altitude represents the general **mixing depth** of the boundary layer on stable days. Comparing it against the lower layers gives a complete picture of vertical atmospheric structure.</p>
                             </div>
                             <div class="heading recommendation-heading">Forecasting Recommendation</div>
                             <p class="dynamic-recommendation static-recommendation">
-                                ⛈️ **Forecasting**: If large temperature differences exist between 2m and 180m, watch for rapidly developing **cumulus clouds** in the afternoon। High stability suggests little risk of heavy rain or storms।
+                                ⛈️ **Forecasting**: If large temperature differences exist between 2m and 180m, watch for rapidly developing **cumulus clouds** in the afternoon. High stability suggests little risk of heavy rain or storms.
                             </p>
                         </div>
                     </div>
@@ -181,11 +181,14 @@
                         <div class="graph-description-box" id="desc-hourlyHumidityChart">
                             <div class="heading">About Relative Humidity (%)</div>
                             <div class="chart-description-text">
-                                <p>Relative humidity measures the amount of water vapor in the air as a percentage of the maximum amount the air can hold at that temperature। This directly affects human comfort, evaporation rates, and dew point risk।</p>
+                                <p>Relative humidity measures the amount of water vapor in the air as a percentage of the maximum amount the air can hold at that temperature. This directly affects human comfort, evaporation rates, and dew point risk.</p>
+                                <p id="humidity-chart-info" class="dynamic-insight-text">
+                                Calculating chart information...
+                                </p>
                             </div>
-                            <div class="heading recommendation-heading">Comfort Recommendation</div>
-                            <p id="humidity-recommendation" class="dynamic-recommendation">
-                                Calculating recommendation...
+                            <div class="heading recommendation-heading">Moisture Metrics (Today)</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                🌫️ **Visibility/Fog**: Monitor Dew Point closely when the air temperature is expected to drop near it. The smaller the difference, the higher the fog and dew risk.
                             </p>
                         </div>
                     </div>
@@ -200,11 +203,11 @@
                         <div class="graph-description-box" id="desc-hourlyDewPointChart">
                             <div class="heading">Absolute Moisture Indicator</div>
                             <div class="chart-description-text">
-                                <p>The **Dew Point** is the temperature at which air must be cooled to become saturated। It is the best measure of the **actual** moisture content in the air and is independent of the current air temperature।</p>
+                                <p>The **Dew Point** is the temperature at which air must be cooled to become saturated. It is the best measure of the **actual** moisture content in the air and is independent of the current air temperature.</p>
                             </div>
-                            <div class="heading recommendation-heading">Moisture Risk Recommendation</div>
+                            <div class="heading recommendation-heading">Moisture Risk Analysis</div>
                             <p class="dynamic-recommendation static-recommendation">
-                                🌫️ **Visibility/Fog**: Monitor Dew Point closely when the air temperature is expected to drop near it। The smaller the difference, the higher the fog and dew risk।
+                                🌫️ **Visibility/Fog**: Monitor Dew Point closely when the air temperature is expected to drop near it. The smaller the difference, the higher the fog and dew risk.
                             </p>
                         </div>
                     </div>
@@ -218,8 +221,12 @@
                         </div>
                         <div class="graph-description-box" id="desc-hourlyVPDChart">
                             <div class="heading">Plant Stress and Transpiration</div>
+                            <div class="chart-description-text">
+                                <p>Vapor Pressure Deficit (VPD) is the difference between the amount of moisture in the air and how much moisture the air can hold when it is saturated. It's a key metric for horticulture and agriculture.</p>
+                            </div>
+                            <div class="heading recommendation-heading">Operational Recommendation</div>
                             <p class="dynamic-recommendation static-recommendation">
-                                🪴 **Irrigation/Greenhouse**: Check VPD during peak daylight hours। Adjust watering schedules or greenhouse ventilation (vents/fans) to maintain VPD in the optimal range ($0.8 \text{ to } 1.5 \text{ kPa}$) for healthy plant growth।
+                                🪴 **Irrigation/Greenhouse**: Check VPD during peak daylight hours. Adjust watering schedules or greenhouse ventilation (vents/fans) to maintain VPD in the optimal range (0.8 to 1.5 kPa) for healthy plant growth.
                             </p>
                         </div>
                     </div>
@@ -237,11 +244,14 @@
                         <div class="graph-description-box" id="desc-hourlyWindChart10m">
                             <div class="heading">About This Data (Surface Wind)</div>
                             <div class="chart-description-text">
-                                <p>This graph compares wind speed at $10\text{m}$ (standard meteorological height) across three days to highlight daily trends and significant shifts in surface wind conditions।</p>
+                                <p>This graph compares wind speed at 10m (standard meteorological height) across three days to highlight daily trends and significant shifts in surface wind conditions.</p>
+                                <p id="wind-chart-info" class="dynamic-insight-text">
+                                Calculating chart information...
+                                </p>
                             </div>
-                            <div class="heading recommendation-heading">Recommendation</div>
-                            <p id="wind-recommendation" class="dynamic-recommendation">
-                                Calculating recommendation...
+                            <div class="heading recommendation-heading">Activity Impact</div>
+                            <p class="dynamic-recommendation static-recommendation">
+                                💨 **General Activity**: Winds below 15 km/h (9 mph) are comfortable. Winds above 30 km/h (18 mph) are considered strong enough to impede walking and outdoor seating.
                             </p>
                         </div>
                     </div>
@@ -256,11 +266,11 @@
                         <div class="graph-description-box" id="desc-hourlyWindChart80m">
                             <div class="heading">Elevated Stability Indicator</div>
                             <div class="chart-description-text">
-                                <p>Wind speed at $80\text{m}$ (approximately $262\text{ft}$) is a key indicator for **wind energy production** and understanding the atmospheric boundary layer। Wind is typically stronger at this height than at the surface।</p>
+                                <p>Wind speed at 80m (approximately 262ft) is a key indicator for **wind energy production** and understanding the atmospheric boundary layer. Wind is typically stronger at this height than at the surface.</p>
                             </div>
                             <div class="heading recommendation-heading">Operational Recommendation</div>
                             <p class="dynamic-recommendation static-recommendation">
-                                🚁 **Drone/Crane**: Check the shear: if the $80\text{m}$ wind is 3x the $10\text{m}$ speed, expect high turbulence on takeoff/landing। Plan for peak wind hours।
+                                🚁 **Drone/Crane**: Check the shear: if the 80m wind is 3x the 10m speed, expect high turbulence on takeoff/landing. Plan for peak wind hours.
                             </p>
                         </div>
                     </div>
@@ -275,11 +285,11 @@
                         <div class="graph-description-box" id="desc-hourlyWindChart120m">
                             <div class="heading">Commercial Wind Energy Height</div>
                             <div class="chart-description-text">
-                                <p>At $120\text{m}$ (nearly $400\text{ft}$), this represents the height for modern, large-scale commercial wind power generation। Speeds here are usually the **strongest** of the lower atmospheric layers।</p>
+                                <p>At 120m (nearly 400ft), this represents the height for modern, large-scale commercial wind power generation. Speeds here are usually the **strongest** of the lower atmospheric layers.</p>
                             </div>
                             <div class="heading recommendation-heading">Industrial Recommendation</div>
                             <p class="dynamic-recommendation static-recommendation">
-                                🌬️ **Wind Farm**: Monitor for speeds exceeding the cut-out limit (typically $90\text{km/h}$ or $55\text{mph}$) which will require turbine shutdowns।
+                                🌬️ **Wind Farm**: Monitor for speeds exceeding the cut-out limit (typically 90 km/h or 55 mph) which will require turbine shutdowns.
                             </p>
                         </div>
                     </div>
@@ -292,13 +302,13 @@
                             <canvas id="hourlyWindChart180m"></canvas>
                         </div>
                         <div class="graph-description-box" id="desc-hourlyWindChart180m">
-                            <div class="heading">Upper Atmospheric Boundary</div>
+                            <div class="heading">Mesoscale Forecasting and Stability</div>
                             <div class="chart-description-text">
-                                <p>$180\text{m}$ wind speed gives a clear view into the movement of the air mass *above* the layers most affected by ground friction। It is a proxy for the **steering wind** of local weather systems।</p>
+                                <p>180m wind speed gives a clear view into the movement of the air mass *above* the layers most affected by ground friction. It is a proxy for the **steering wind** of local weather systems.</p>
                             </div>
                             <div class="heading recommendation-heading">Forecasting Recommendation</div>
                             <p class="dynamic-recommendation static-recommendation">
-                                ☁️ **Forecasting**: If the $180\text{m}$ wind is strong, expect fast-moving changes in overhead cloud cover। If it's calm, local conditions (e.g., fog, humidity) will dominate the weather pattern।
+                                ☁️ **Forecasting**: If the 180m wind is strong, expect fast-moving changes in overhead cloud cover. If it's calm, local conditions (e.g., fog, humidity) will dominate the weather pattern.
                             </p>
                         </div>
                     </div>
