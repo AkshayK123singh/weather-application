@@ -12,10 +12,9 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     transition: background-image 0.5s ease;
-    background-color: #1e1e1e; /* Fallback color */
+    background-color: #1e1e1e; 
 }
 
-/* Rain Animation - For extra visual appeal during precipitation */
 .rain {
     position: fixed;
     top: 0;
@@ -71,7 +70,7 @@ body {
     text-align: center;
     white-space: nowrap;
     
-    /* ADDED: Allow links to grow and take up more space */
+    
     flex-grow: 1; 
     min-width: fit-content;
 }
@@ -97,7 +96,7 @@ body {
     align-items: center; 
 }
 
-/* NEW STYLES FOR SIDE-BY-SIDE LAYOUT */
+
 #top-dashboard-row {
     display: flex;
     gap: 20px;
@@ -106,31 +105,30 @@ body {
     align-items: stretch; 
 }
 
-/* The left column holding the insight box (Maximized width) */
+
 #left-insight-column {
     min-width: 400px; 
     max-width: 650px; 
     flex-basis: 55%; 
     
-    /* Removed float animation for stability */
-    background: rgba(0, 0, 0, 0.7); /* Slightly higher opacity for stability */
-    backdrop-filter: blur(12px); /* Slightly stronger blur */
+    
+    background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(12px); 
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Deeper shadow for "lift" */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
     overflow: hidden;
     padding: 0; 
     border: 1px solid rgba(255, 255, 255, 0.1); 
     display: block; 
 }
 
-/* The right column holding the main weather display */
 #dashboard-container {
     flex-grow: 1; 
     min-width: 350px; 
 }
 
 
-/* Base style for the Comfort Insight Card (inside left-insight-column) */
+
 #comfort-insight-card {
     min-height: 100%; 
     margin: 0; 
@@ -149,10 +147,10 @@ body {
 .info-section {
     width: 100%;
     max-width: 1200px; 
-    background: rgba(0, 0, 0, 0.7); /* Slightly higher opacity */
-    backdrop-filter: blur(12px); /* Slightly stronger blur */
+    background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(12px); 
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Deeper shadow for "lift" */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
     overflow: hidden;
     display: none;
     border: 1px solid rgba(255, 255, 255, 0.1); 
@@ -341,8 +339,6 @@ body {
     opacity: 0.7;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
-
-/* Data grid style remains the same, cards will wrap due to narrower container */
 .data-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -839,3 +835,4 @@ body {
         margin: 10px 0;
     }
 }
+
