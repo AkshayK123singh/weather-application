@@ -56,7 +56,6 @@ body {
     margin-bottom: 20px;
     overflow-x: auto;
     display: flex;
-    /* IMPROVED: Use space-around to spread links and fill space */
     justify-content: space-around; 
     gap: 10px;
 }
@@ -173,8 +172,6 @@ body {
     animation: none;
     margin-bottom: 0;
 }
-
-/* Removed @keyframes float */
 
 .app-header {
     display: flex;
@@ -578,18 +575,15 @@ body {
 .graph-container {
     width: 100%;
     max-width: 1200px; 
-    height: 400px;
+    height: 100%;
+    min-height: 300px; 
     margin: 0;
     padding: 25px; 
-    /* IMPROVED: Increased opacity for better contrast */
     background: rgba(0, 0, 0, 0.8); 
     backdrop-filter: blur(8px);
     border-radius: 18px; 
-    /* IMPROVED: Stronger 3D lift shadow */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
-    /* IMPROVED: Lighter text color for better readability on dark background */
     color: #E0E0E0; 
-    /* Default is golden border, specific sections override this inline */
     border-left: 5px solid #ffbb00; 
 }
 
@@ -597,7 +591,6 @@ body {
     text-align: left; 
     margin-bottom: 15px;
     font-size: 20px;
-    /* IMPROVED: Sharper title color */
     color: #FFD700; 
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -618,13 +611,15 @@ body {
 #hourlyDirectRadChart, 
 #hourlyDewPointChart,
 #hourlyVPDChart,
-#cloudCoverChart,      /* NEW */
-#aqiPM25Chart,         /* NEW */
-#aqiOzoneChart,        /* NEW */
-#aqiCOChart {          /* NEW */
+#cloudCoverChart,      
+#aqiPM25Chart,         
+#aqiOzoneChart,        
+#aqiCOChart,
+#hourlyAqiChart,       
+#aqiPMChart,           
+#aqiGasChart {         
     width: 100% !important;
     height: 100% !important;
-    /* ADDED: Subtle dark background for chart canvas area */
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
@@ -634,6 +629,7 @@ body {
     flex-direction: column;
     gap: 20px;
     padding: 20px;
+    min-height: 1px;
 }
 
 .graph-container-item {
@@ -650,23 +646,19 @@ body {
 
 .graph-description-box {
     flex: 1; 
-    min-height: 400px; 
+    min-height: 300px; 
     display: flex; 
     flex-direction: column;
     justify-content: flex-start;
     gap: 10px; 
     
-    /* IMPROVED: Increased opacity for better contrast */
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(8px);
     border-radius: 18px;
-    /* IMPROVED: Stronger 3D lift shadow */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    /* IMPROVED: Lighter text color */
     color: #E0E0E0;
     padding: 25px;
     
-    /* Default is golden border, specific sections override this inline */
     border-right: 5px solid #ffbb00; 
 }
 
@@ -674,7 +666,7 @@ body {
 .graph-description-box .heading {
     font-size: 18px;
     font-weight: bold;
-    color: #FFC107; /* Brighter Golden */
+    color: #FFC107; 
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 5px;
     margin-bottom: 5px; 
@@ -684,7 +676,7 @@ body {
 .chart-description-text {
     font-size: 14px;
     line-height: 1.6;
-    color: #E0E0E0; /* Consistent light gray */
+    color: #E0E0E0; 
     flex-grow: 1; 
 }
 
@@ -703,7 +695,7 @@ body {
 
 /* Style for the recommendation heading */
 .recommendation-heading {
-    color: #4CAF50; /* Green */
+    color: #4CAF50; 
     border-bottom-color: rgba(76, 175, 80, 0.3);
     margin-top: 10px;
     margin-bottom: 5px;
@@ -713,7 +705,7 @@ body {
 .dynamic-recommendation {
     font-size: 15px;
     font-weight: bold;
-    color: #FFC107; /* Brighter color for emphasis */
+    color: #FFC107; 
     padding: 10px;
     border-left: 4px solid #ff8800; 
     background: rgba(255, 170, 0, 0.1); 
@@ -736,7 +728,7 @@ body {
     width: 100%;
     max-width: 800px;
     margin: 20px auto 0;
-    background: rgba(0, 0, 0, 0.8); /* Improved contrast */
+    background: rgba(0, 0, 0, 0.8); 
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -777,7 +769,7 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
-    color: #E0E0E0; /* Consistent light gray */
+    color: #E0E0E0; 
     opacity: 0.8;
 }
 
@@ -824,21 +816,22 @@ body {
     /* Stacking graphs and descriptions on smaller screens */
     .graph-container-item {
         flex-direction: column;
+        align-items: stretch; 
     }
     .graph-container-item .graph-container {
         width: 100%;
-        min-height: 300px; /* Reduced height for mobile */
+        min-height: 250px; 
     }
     .graph-container {
-        border-left: none !important; /* Remove left border when stacked */
-        border-top: 5px solid; /* Use a top border instead */
+        border-left: none !important; 
+        border-top: 5px solid; 
         border-right: none !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .graph-description-box {
-        border-right: none !important; /* Remove right border when stacked */
+        border-right: none !important; 
         border-top: none !important;
-        border-left: 5px solid; /* Use a left border for the description box */
+        border-left: 5px solid; 
         min-height: auto;
     }
     
